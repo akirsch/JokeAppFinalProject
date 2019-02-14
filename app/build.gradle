@@ -32,6 +32,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "version"
+    productFlavors{
+        free {
+            dimension "version"
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+        paid {
+            dimension "version"
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+    }
 }
 
 dependencies {
@@ -40,9 +51,9 @@ dependencies {
     implementation project(':jokelib')
     implementation project(':jokedisplay')
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:support-media-compat:28.0.0'
+    freeImplementation 'com.android.support:support-media-compat:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+    freeImplementation 'com.google.android.gms:play-services-ads:11.8.0'
     implementation 'com.google.api-client:google-api-client:1.23.0'
     implementation 'com.google.http-client:google-http-client-android:1.23.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
@@ -50,6 +61,11 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 
     testImplementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
 }
